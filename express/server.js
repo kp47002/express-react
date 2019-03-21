@@ -33,6 +33,13 @@ app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);
 });
 
+app.get("/", function(req, res) {
+  console.log("get");
+  connection.query("SELECT * FROM user", (err, data) => {
+    err ? res.send(err) : res.json({ user: data });
+  });
+});
+
 app.post("/data", function(req, res) {
   console.log(req.body);
   var username = req.body.name;
