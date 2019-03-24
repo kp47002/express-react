@@ -3,16 +3,33 @@ const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
+var cookieParser = require("cookie-parser");
 
-const app = express();
-app.use(cors());
+var app = express();
+//app.use(cors());
+
+let whitelist = ["http://localhost:3000"];
+let corsOptions = {
+  origin: function(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
+
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
+
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
@@ -35,13 +52,16 @@ app.listen(PORT, () => {
 
 app.get("/", function(req, res) {
   console.log("get");
+  console.log("Cookies: ", req.cookies);
   connection.query("SELECT * FROM user", (err, data) => {
     err ? res.send(err) : res.json({ user: data });
   });
 });
 
 app.post("/data", function(req, res) {
+  console.log("req.body");
   console.log(req.body);
+  console.log("Cookies: ", req.cookies);
   var username = req.body.name;
   connection.query(
     "INSERT INTO `user` (name) VALUES (?)",

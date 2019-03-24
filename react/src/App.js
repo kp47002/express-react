@@ -1,12 +1,29 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { instanceOf } from "prop-types";
+
+import { withCookies, Cookies } from "react-cookie";
 
 class App extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
   constructor(props) {
     super(props);
-    this.state = { user: [], value: "", editId: 0, editValue: "" };
+    const { cookies } = props;
+    console.log("ck: " + cookies);
+    this.state = {
+      user: [],
+      value: "",
+      valueLogin: cookies.get("loginCookie") || "",
+      valueLoginInput: "",
+      editId: 0,
+      editValue: ""
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.handleLoginChange = this.handleLoginChange.bind(this);
     this.handleEditChange = this.handleEditChange.bind(this);
   }
 
@@ -18,16 +35,27 @@ class App extends Component {
     console.log(event);
     this.setState({ value: event.target.value });
   }
+  handleLoginChange(event) {
+    console.log("handleChange");
+    console.log(event);
+    this.setState({ valueLoginInput: event.target.value });
+  }
   handleEditChange(event) {
     console.log("handleEditChange");
     console.log(event);
     this.setState({ editValue: event.target.value });
   }
+  login = () => {
+    const { cookies } = this.props;
+    cookies.set("loginCookie", this.state.valueLoginInput, { path: "/" });
+    window.location.reload();
+  };
 
   editSubmit = () => {
     console.log("this.post");
     fetch("http://localhost:3001/edit", {
       method: "POST",
+      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -53,8 +81,10 @@ class App extends Component {
 
   post = () => {
     console.log("this.post");
+
     fetch("http://localhost:3001/data", {
       method: "POST",
+      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -70,7 +100,7 @@ class App extends Component {
   };
 
   getUsers = () => {
-    fetch("http://localhost:3001")
+    fetch("http://localhost:3001", { credentials: "include" })
       .then(response => {
         return response.json();
       })
@@ -85,6 +115,7 @@ class App extends Component {
     console.log("delete");
     fetch("http://localhost:3001/delete", {
       method: "POST",
+      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -140,15 +171,24 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>Hello {this.state.valueLogin}!</h1>
+          login
+          <input
+            type="text"
+            value={this.state.valueLoginInput}
+            onChange={this.handleLoginChange}
+          />
+          <button onClick={() => this.login()}>login</button>
           <img src={logo} className="App-logo" alt="logo" />
           <table>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-            </tr>
-            {rows}
+            <tbody>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+              </tr>
+              {rows}
+            </tbody>
           </table>
-
           <input
             type="text"
             value={this.state.value}
@@ -161,4 +201,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);
