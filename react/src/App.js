@@ -158,7 +158,8 @@ class App extends Component {
           <tr id={u.id}>
             <td>{u.id}</td>
 
-            <td>{u.name}</td>
+            <td>{u.username}</td>
+            <td>{u.password}</td>
             <td>
               <button onClick={() => this.delete(u.id)}>Delete</button>
               <button onClick={() => this.edit(u.id)}>Edit</button>
@@ -185,6 +186,7 @@ class App extends Component {
               <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Password</th>
               </tr>
               {rows}
             </tbody>
