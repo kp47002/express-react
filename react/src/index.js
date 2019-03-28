@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import AppRouter from "./AppRouter";
 import * as serviceWorker from "./serviceWorker";
 import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
   <CookiesProvider>
-    <App />
+    <AppRouter />
   </CookiesProvider>,
 
   document.getElementById("root")
