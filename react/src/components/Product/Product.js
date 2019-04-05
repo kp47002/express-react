@@ -1,8 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import ProductSingle from "../ProductSingle/ProductSingle";
 
 class Product extends Component {
   render() {
-    return <div>Product</div>;
+    let products = [];
+    this.props.products.forEach(element => {
+      products.push(<ProductSingle product={element} />);
+    });
+    return (
+      <div>
+        Product
+        {products}
+      </div>
+    );
   }
 }
 

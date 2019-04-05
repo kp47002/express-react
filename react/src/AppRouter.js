@@ -16,10 +16,10 @@ function AppRouter() {
       <Header>
         <Route path="/" exact component={App} />
         <Route path="/add" exact component={Add} />
-        <Route path="/product" exact component={Product} />
+        <Route path="/product/:productId?" exact component={Product} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
-        <Route path="/buy" exact component={Buy} />
+        <Route path="/buy/:productId?" exact component={Buy} />
         <Route path="/sell" exact component={Sell} />
       </Header>
     </Router>

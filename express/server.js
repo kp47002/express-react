@@ -6,6 +6,7 @@ const cors = require("cors");
 var cookieParser = require("cookie-parser");
 
 var app = express();
+const useCorsOptions = true;
 //app.use(cors());
 
 let whitelist = ["http://localhost:3000"];
@@ -19,7 +20,11 @@ let corsOptions = {
   },
   credentials: true
 };
-app.use(cors(corsOptions));
+if (useCorsOptions) {
+  app.use(cors(corsOptions));
+} else {
+  app.use(cors());
+}
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -50,6 +55,10 @@ app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);
 });
 
+require("./routes/login")(app, connection);
+require("./routes/register")(app, connection);
+require("./routes/product")(app, connection);
+
 app.get("/", function(req, res) {
   console.log("get");
   console.log("Cookies: ", req.cookies);
@@ -72,72 +81,6 @@ app.post("/data", function(req, res) {
     }
   );
   res.send(username);
-});
-
-app.post("/register", function(req, res) {
-  console.log("req.body");
-  console.log(req.body);
-  console.log("Cookies: ", req.cookies);
-  let response = { status: "", message: "" };
-
-  let username = req.body.username;
-  let email = req.body.email;
-  let password = req.body.password;
-  let mysqlquery =
-    "INSERT INTO `user` (username, email, password) VALUES (" +
-    mysql.escape(username) +
-    ", " +
-    mysql.escape(email) +
-    ", " +
-    mysql.escape(password) +
-    ")";
-  //console.log("query: " + mysqlquery);
-  connection.query(mysqlquery, function(err, result) {
-    if (err) {
-      response.status = "error";
-      response.message = err.message;
-    } else {
-      response.status = "ok";
-      response.message = "User successfully registered";
-      console.log("User successfully registered");
-    }
-    console.log("Response: " + response);
-    res.send(response);
-  });
-});
-
-app.post("/login", function(req, res) {
-  console.log("req.body");
-  console.log(req.body);
-  console.log("Cookies: ", req.cookies);
-  let response = { status: "", message: "" };
-
-  let username = req.body.username;
-  //let email = req.body.email;
-  let password = req.body.password;
-  let mysqlquery =
-    "SELECT COUNT(*) AS count FROM `user` WHERE username = " +
-    mysql.escape(username) +
-    "AND password =  " +
-    mysql.escape(password);
-  console.log("query: " + mysqlquery);
-  connection.query(mysqlquery, function(err, result) {
-    console.log(result[0].count);
-    if (err) {
-      response.status = "error";
-      response.message = err.message;
-    } else if (result[0].count == 0) {
-      response.status = "error";
-      response.message = "Incorrect login";
-      console.log("Incorrect login");
-    } else {
-      response.status = "ok";
-      response.message = "User successfully registered";
-      console.log("User successfully registered");
-    }
-    console.log("Response: " + response);
-    res.send(response);
-  });
 });
 
 app.post("/delete", function(req, res) {

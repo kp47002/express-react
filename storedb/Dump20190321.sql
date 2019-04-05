@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `storedb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `storedb`;
 -- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
 -- Host: localhost    Database: storedb
@@ -18,6 +16,40 @@ USE `storedb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `product` (
+  `id_product` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `fk_user` int(11) NOT NULL,
+  `fk_buyer` int(11) DEFAULT NULL,
+  `productcol` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_product`),
+  UNIQUE KEY `id_product_UNIQUE` (`id_product`),
+  KEY `fk_user` (`fk_user`),
+  KEY `fk_sell_idx` (`fk_buyer`),
+  CONSTRAINT `fk_buy` FOREIGN KEY (`fk_buyer`) REFERENCES `user` (`id`),
+  CONSTRAINT `product_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (2,'test1','test1',1,48,NULL,NULL),(3,'test1','test1',1,48,NULL,NULL),(4,'test2','test2',2,48,NULL,NULL);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -31,7 +63,7 @@ CREATE TABLE `user` (
   `email` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +72,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (5,'aa','1','1'),(6,'Ivana','2','2'),(23,'luce','3','3'),(24,'new','new','new'),(44,'new2','new','new2'),(45,'new3','new','new3'),(48,'a','a','a'),(49,'','','');
+INSERT INTO `user` VALUES (5,'aa','1','1'),(6,'Ivana','2','2'),(23,'luce','3','3'),(24,'new','new','new'),(44,'new2','new','new2'),(45,'new3','new','new3'),(48,'a','a','a'),(49,'','',''),(50,'d','d','d'),(51,'jelena','jelena','jelena');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,4 +89,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-29  0:16:28
+-- Dump completed on 2019-04-05 17:07:00

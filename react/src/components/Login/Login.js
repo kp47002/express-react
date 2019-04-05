@@ -66,6 +66,7 @@ class Login extends Component {
         } else {
           cookies.set("loginCookie", this.state.username);
           this.props.history.push("/");
+          window.location.reload();
         }
         console.log(response);
         alert(message);
