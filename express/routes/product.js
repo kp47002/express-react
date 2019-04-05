@@ -2,15 +2,13 @@ const mysql = require("mysql");
 
 module.exports = function(app, connection) {
   app.post("/product/create", function(req, res) {
-    console.log("req.body");
+    console.log("/product/create body");
     console.log(req.body);
     console.log("Cookies: ", req.cookies);
     let name = req.body.name;
     let description = req.body.description;
     let price = req.body.price;
-    let fk_user = req.body.fk_user;
-
-    fk_user = 1;
+    let username = req.body.username;
 
     let mysqlquery =
       "INSERT INTO `product` (name, description, price, fk_user) VALUES (" +
@@ -20,10 +18,12 @@ module.exports = function(app, connection) {
       ", " +
       mysql.escape(price) +
       ", " +
-      mysql.escape(fk_user) +
-      ")";
+      "(SELECT id FROM `user` WHERE username = " +
+      mysql.escape(username) +
+      ") )";
+    console.log(mysqlquery);
     connection.query(mysqlquery, function(err, result) {
-      err ? res.send(err) : res.json({ products: data });
+      err ? res.send(err) : res.json({ status: "ok" });
     });
   });
 
