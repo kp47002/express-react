@@ -42,7 +42,7 @@ class Buy extends Component {
     return (
       <div>
         Buy
-        <Product products={this.state.products} />
+        <Product products={this.state.products} mode="buy" />
       </div>
     );
   }

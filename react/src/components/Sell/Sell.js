@@ -123,7 +123,7 @@ class Sell extends Component {
     return (
       <div>
         Buy
-        <Product products={this.state.products} />
+        <Product products={this.state.products} mode="sell" />
         {sell}
       </div>
     );

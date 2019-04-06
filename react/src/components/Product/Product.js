@@ -5,7 +5,7 @@ class Product extends Component {
   render() {
     let products = [];
     this.props.products.forEach(element => {
-      products.push(<ProductSingle product={element} />);
+      products.push(<ProductSingle product={element} mode={this.props.mode} />);
     });
     return (
       <div>
