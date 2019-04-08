@@ -35,7 +35,7 @@ class ProductSingle extends Component {
   };
 
   render() {
-    console.log(this.props.product.buyer);
+    console.log("buyer: " + this.props.product.buyer);
     let buy;
     if (this.props.mode == "buy") {
       if (this.state.activeUser == "") {
@@ -49,7 +49,7 @@ class ProductSingle extends Component {
       <div>
         ProductSingle
         {this.props.product.name} - - {this.props.product.description} - -
-        {this.props.product.price} - -{this.props.product.username} - -
+        {this.props.product.price} - -{this.props.product.username} - -|||
         {this.props.product.buyer} - -{buy}
       </div>
     );

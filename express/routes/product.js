@@ -36,7 +36,7 @@ module.exports = function(app, connection) {
     let username = req.body.username;
 
     let mysqlquery =
-      "UPDATE  `product` SET fk_user =  (SELECT id FROM `user` WHERE username = " +
+      "UPDATE  `product` SET fk_buyer =  (SELECT id FROM `user` WHERE username = " +
       mysql.escape(username) +
       ") WHERE id_product = " +
       mysql.escape(id_product) +
