@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-
 import { withCookies, Cookies } from "react-cookie";
 
 class ProductSingle extends Component {
   constructor(props) {
     super(props);
+
     const { cookies } = props;
     this.state = {
       id_product: -1,
@@ -13,7 +13,6 @@ class ProductSingle extends Component {
       email: ""
     };
   }
-
   buy = () => {
     console.log("this.post");
 

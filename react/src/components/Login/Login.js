@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
 import { instanceOf } from "prop-types";
-
 import { withCookies, Cookies } from "react-cookie";
+import "./Login.css";
 
 class Login extends Component {
   static propTypes = {
@@ -77,26 +76,23 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        Login
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChangeUsername}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="text"
-              value={this.state.password}
-              onChange={this.handleChangePassword}
-            />
-          </label>
-          <input type="submit" value="Submit" />
+      <div className="login">
+        <form className="submit-form" onSubmit={this.handleSubmit}>
+          <input
+            className="input-form"
+            type="text"
+            value={this.state.username}
+            onChange={this.handleChangeUsername}
+            placeholder="Username"
+          />
+          <input
+            className="input-form"
+            type="text"
+            value={this.state.password}
+            onChange={this.handleChangePassword}
+            placeholder="Password"
+          />
+          <input className="submit-button" type="submit" value="Log in" />
         </form>
       </div>
     );

@@ -63,6 +63,7 @@ class Sell extends Component {
       })
     }).then(response => {
       console.log(response);
+
       this.setState({ formSell: false });
       this.getProducts();
       //this.forceUpdate();

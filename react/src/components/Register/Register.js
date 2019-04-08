@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { instanceOf } from "prop-types";
 import { Redirect } from "react-router-dom";
+import "./Register.css";
 
 import { withCookies, Cookies } from "react-cookie";
 
@@ -75,7 +76,6 @@ class Register extends Component {
         } else {
           cookies.set("loginCookie", this.state.username);
           this.props.history.push("/");
-          window.location.reload();
         }
         console.log(response);
         alert(message);
@@ -86,34 +86,30 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        Register
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            E-mail:
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.handleChangeEmail}
-            />
-          </label>
-          <label>
-            Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChangeUsername}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="text"
-              value={this.state.password}
-              onChange={this.handleChangePassword}
-            />
-          </label>
-          <input type="submit" value="Submit" />
+      <div className="register">
+        <form className="submit-form" onSubmit={this.handleSubmit}>
+          <input
+            className="input-form"
+            placeholder="E-mail"
+            type="text"
+            value={this.state.email}
+            onChange={this.handleChangeEmail}
+          />
+          <input
+            className="input-form"
+            placeholder="Username"
+            type="text"
+            value={this.state.username}
+            onChange={this.handleChangeUsername}
+          />
+          <input
+            className="input-form"
+            placeholder="Password"
+            type="text"
+            value={this.state.password}
+            onChange={this.handleChangePassword}
+          />
+          <input className="submit-button" type="submit" value="Register" />
         </form>
       </div>
     );

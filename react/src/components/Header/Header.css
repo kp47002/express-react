@@ -1,0 +1,56 @@
+.navbar-out {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar-in {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.navbar-in-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar-in-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.link {
+    margin-right: 1vw;
+    font-size: 20pt;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    color: orange;
+}
+
+.user {
+    margin-right: 1vw;
+    font-size: 20pt;
+    text-decoration: none;
+    font-weight: bold;
+    color: #0e5d92;
+}
+
+.img-link {
+    margin-right: 2vw;
+}
+
+
+.logout:hover {
+    cursor: pointer;
+}

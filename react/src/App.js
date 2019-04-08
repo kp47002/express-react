@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { instanceOf } from "prop-types";
-
 import { withCookies, Cookies } from "react-cookie";
 
 class App extends Component {
@@ -45,11 +43,6 @@ class App extends Component {
     console.log(event);
     this.setState({ editValue: event.target.value });
   }
-  login = () => {
-    const { cookies } = this.props;
-    cookies.set("loginCookie", this.state.valueLoginInput, { path: "/" });
-    window.location.reload();
-  };
 
   editSubmit = () => {
     console.log("this.post");
@@ -172,15 +165,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Hello {this.state.valueLogin}!</h1>
-          login
-          <input
-            type="text"
-            value={this.state.valueLoginInput}
-            onChange={this.handleLoginChange}
-          />
-          <button onClick={() => this.login()}>login</button>
-          <img src={logo} className="App-logo" alt="logo" />
           <table>
             <tbody>
               <tr>
@@ -191,12 +175,6 @@ class App extends Component {
               {rows}
             </tbody>
           </table>
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-          <button onClick={() => this.post()}>Add</button>
         </header>
       </div>
     );

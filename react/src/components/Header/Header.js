@@ -2,6 +2,8 @@ import React, { Component, Children } from "react";
 import { Link } from "react-router-dom";
 import { withCookies, Cookies } from "react-cookie";
 import { instanceOf } from "prop-types";
+import header from "../../assets/header2.png";
+import "./Header.css";
 
 class Header extends Component {
   static propTypes = {
@@ -20,32 +22,48 @@ class Header extends Component {
     const { cookies } = this.props;
     cookies.remove("loginCookie");
     alert("Logout successfull!");
-    window.location.reload();
+    // window.location.reload();
+    this.setState({ activeUser: "" });
   }
   render() {
     let userLogin;
     if (this.state.activeUser == "") {
       userLogin = (
-        <div>
-          <Link to="/login">Login </Link>
-          <Link to="/register">Register </Link>
+        <div className="navbar-out">
+          <Link className="img-link" to="/">
+            <img className="img-header" src={header} />
+          </Link>
+          <Link className="link" to="/buy">
+            Buy
+          </Link>
+          <Link className="link" to="/login">
+            Login
+          </Link>
+          <Link className="link" to="/register">
+            Register
+          </Link>
         </div>
       );
     } else {
       userLogin = (
-        <div>
-          <p>{this.state.activeUser} </p>
-          <button onClick={() => this.logout()}>Logout</button>
+        <div className="navbar-in">
+          <div className="navbar-in-left">
+            <Link className="link" to="/">
+              <img src={header} />
+            </Link>
+            <Link className="link" to="/buy">Buy</Link>
+            <Link className="link" to="/sell">Sell</Link>
+          </div>
+          <div className="navbar-in-right">
+            <p className="user">Hello {this.state.activeUser}!</p>
+            <Link className="link logout" onClick={() => this.logout()}>Logout</Link>
+          </div>
         </div>
       );
     }
 
     return (
       <div>
-        Header
-        <Link to="/buy">Buy </Link>
-        <Link to="/sell">Sell </Link>
-        <Link to="/">Home </Link>
         {userLogin}
         {this.props.children}
       </div>

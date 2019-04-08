@@ -1,0 +1,64 @@
+.login {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form {
+  width: 25vw;
+  min-width: 200px;
+  height: 3vw;
+  min-height: 25px;
+  font-size: 17pt;
+  margin-bottom: 0.5vw;
+}
+
+.submit-button {
+  font-size: 17pt;
+  justify-self: center;
+  padding: 8px 20px;
+  background-color: orange;
+}
+
+@media screen and (max-width: 370px) {
+  .input-form {
+    font-size: 9pt;
+  }
+  .submit-button {
+    font-size: 9pt;
+  }
+}
+
+@media screen and (min-width: 370px) and (max-width: 750px) {
+  .input-form {
+    font-size: 11pt;
+  }
+  .submit-button {
+    font-size: 11pt;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 860px) {
+  .input-form {
+    font-size: 12pt;
+  }
+  .submit-button {
+    font-size: 12pt;
+  }
+}
+
+@media screen and (min-width: 860px) and (max-width: 1030px) {
+  .input-form {
+    font-size: 14pt;
+  }
+  .submit-button {
+    font-size: 14pt;
+  }
+}
