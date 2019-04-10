@@ -29,34 +29,45 @@ class Header extends Component {
     let userLogin;
     if (this.state.activeUser == "") {
       userLogin = (
-        <div className="navbar-out">
-          <Link className="img-link" to="/">
-            <img className="img-header" src={header} />
-          </Link>
-          <Link className="link" to="/buy">
-            Buy
-          </Link>
-          <Link className="link" to="/login">
-            Login
-          </Link>
-          <Link className="link" to="/register">
-            Register
-          </Link>
+        <div className="navbar">
+          <div className="navbar-left">
+            <Link className="img-link" to="/">
+              <img className="img-header" src={header} />
+            </Link>
+            <Link className="link" to="/buy">
+              Buy
+            </Link>
+            <Link className="link" to="/login">
+              Login
+            </Link>
+            <Link className="link" to="/register">
+              Register
+            </Link>
+          </div>
+          <div className="navbar-right">
+            <p className="user">Guest user</p>
+          </div>
         </div>
       );
     } else {
       userLogin = (
-        <div className="navbar-in">
-          <div className="navbar-in-left">
+        <div className="navbar">
+          <div className="navbar-left">
             <Link className="link" to="/">
               <img src={header} />
             </Link>
-            <Link className="link" to="/buy">Buy</Link>
-            <Link className="link" to="/sell">Sell</Link>
+            <Link className="link" to="/buy">
+              Buy
+            </Link>
+            <Link className="link" to="/sell">
+              Sell
+            </Link>
           </div>
-          <div className="navbar-in-right">
+          <div className="navbar-right">
             <p className="user">Hello {this.state.activeUser}!</p>
-            <Link className="link logout" onClick={() => this.logout()}>Logout</Link>
+            <Link className="link logout" onClick={() => this.logout()}>
+              Logout
+            </Link>
           </div>
         </div>
       );
