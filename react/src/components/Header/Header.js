@@ -31,18 +31,22 @@ class Header extends Component {
       userLogin = (
         <div className="navbar">
           <div className="navbar-left">
-            <Link className="img-link" to="/">
-              <img className="img-header" src={header} />
-            </Link>
-            <Link className="link" to="/buy">
-              Buy
-            </Link>
-            <Link className="link" to="/login">
-              Login
-            </Link>
-            <Link className="link" to="/register">
-              Register
-            </Link>
+            <div className="navbar-left-header">
+              <Link className="img-link" to="/">
+                <img className="img-header" src={header} />
+              </Link>
+            </div>
+            <div className="navbar-left-links">
+              <Link className="link" to="/buy">
+                Buy
+              </Link>
+              <Link className="link" to="/login">
+                Login
+              </Link>
+              <Link className="link" to="/register">
+                Register
+              </Link>
+            </div>
           </div>
           <div className="navbar-right">
             <p className="user">Guest user</p>
@@ -53,15 +57,19 @@ class Header extends Component {
       userLogin = (
         <div className="navbar">
           <div className="navbar-left">
-            <Link className="link" to="/">
-              <img src={header} />
-            </Link>
-            <Link className="link" to="/buy">
-              Buy
-            </Link>
-            <Link className="link" to="/sell">
-              Sell
-            </Link>
+            <div className="navbar-left-header">
+              <Link className="link" to="/">
+                <img src={header} />
+              </Link>
+            </div>
+            <div className="navbar-left-links">
+              <Link className="link" to="/buy">
+                Buy
+              </Link>
+              <Link className="link" to="/sell">
+                Sell
+              </Link>
+            </div>
           </div>
           <div className="navbar-right">
             <p className="user">Hello {this.state.activeUser}!</p>
