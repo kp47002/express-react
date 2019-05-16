@@ -72,7 +72,13 @@ class Header extends Component {
             </div>
           </div>
           <div className="navbar-right">
-            <p className="user">Hello {this.state.activeUser}!</p>
+            <p className="user">
+              Hello{" "}
+              <Link className="link" to="/profile">
+                {this.state.activeUser}
+              </Link>
+              !
+            </p>
             <Link className="link logout" onClick={() => this.logout()}>
               Logout
             </Link>

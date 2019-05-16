@@ -58,6 +58,8 @@ app.listen(PORT, () => {
 require("./routes/login")(app, connection);
 require("./routes/register")(app, connection);
 require("./routes/product")(app, connection);
+require("./routes/profileSold")(app, connection);
+require("./routes/profileBought")(app, connection);
 
 app.get("/", function(req, res) {
   console.log("get");

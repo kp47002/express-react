@@ -47,9 +47,8 @@ class ProductSingle extends Component {
     console.log(this.props);
     return (
       <div>
-        ProductSingle
-        {this.props.product.name} - - {this.props.product.description} - -
-        {this.props.product.price} - -{this.props.product.username} - -|||
+        ProductSingle P. Name: {this.props.product.name}| Seller:{" "}
+        {this.props.product.username} | Buyer:
         {this.props.product.buyer} - -{buy}
       </div>
     );

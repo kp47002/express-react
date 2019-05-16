@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Product from "./components/Product";
 import Header from "./components/Header";
+import Profile from "./components/Profile/Profile";
 
 function AppRouter() {
   return (
@@ -21,6 +22,7 @@ function AppRouter() {
         <Route path="/register" exact component={Register} />
         <Route path="/buy/:productId?" exact component={Buy} />
         <Route path="/sell/:productId?" exact component={Sell} />
+        <Route path="/profile" exact component={Profile} />
       </Header>
     </Router>
   );

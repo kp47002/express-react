@@ -17,3 +17,4 @@ class Product extends Component {
 }
 
 export default Product;
+
