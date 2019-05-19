@@ -25,6 +25,7 @@
   justify-self: center;
   padding: 8px 20px;
   background-color: orange;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 370px) {

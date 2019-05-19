@@ -42,7 +42,7 @@ class Buy extends Component {
   render() {
     return (
       <div className="buy">
-        Buy
+        <p className="buy-header">Buy</p>
         <Product products={this.state.products} mode="buy" />
       </div>
     );

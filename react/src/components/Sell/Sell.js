@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "../Product/Product";
+import "./Sell.css";
 
 import { withCookies, Cookies } from "react-cookie";
 
@@ -93,39 +94,42 @@ class Sell extends Component {
   render() {
     let sell;
     if (this.state.activeUser == "") {
-      sell = <p>Login to sell</p>;
+      // sell = <p>Login to sell</p>;
     } else {
       if (this.state.formSell == false) {
-        sell = <button onClick={() => this.formSell()}>Add</button>;
+        sell = <button className="sell-btn" onClick={() => this.formSell()}>Add</button>;
       } else {
         sell = (
-          <div>
+          <div className="sell-form">
             <input
               type="text"
               value={this.state.name}
               onChange={this.handleChangeName}
+              className="sell-input"
             />
             <input
               type="text"
               value={this.state.description}
               onChange={this.handleChangeDescription}
+              className="sell-input"
             />
             <input
               type="text"
               value={this.state.price}
               onChange={this.handleChangePrice}
+              className="sell-input"
             />
-            <button onClick={() => this.addProduct()}>Add</button>;
+            <button className="sell-btn" onClick={() => this.addProduct()}>Add</button>;
           </div>
         );
       }
     }
     console.log("sell: " + sell);
     return (
-      <div>
-        Buy
+      <div className="sell">
+        <p className="sell-header">Sell</p>
+        <div className="sell-div">{sell}</div>
         <Product products={this.state.products} mode="sell" />
-        {sell}
       </div>
     );
   }

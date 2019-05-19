@@ -43,8 +43,8 @@ app.use(function(req, res, next) {
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
-  database: "storedb"
+  password: "12345",
+  database: "storedb2"
 });
 
 connection.connect(err => {

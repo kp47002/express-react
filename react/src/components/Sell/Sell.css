@@ -1,0 +1,44 @@
+.sell {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0 5%;
+}
+
+.sell-header {
+  color: #ffffff;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.sell-form {
+  display: flex;
+  justify-content: flex start;
+  align-items: flex start;
+}
+
+.sell-btn {
+  background-color: orange;
+  font-weight: bold;
+  font-size: 14pt;
+  width: 7vw;
+  height: 3vw;
+  min-width: 60px;
+  min-height: 30px;
+  cursor: pointer;
+  margin-bottom: 2vw;
+}
+
+.sell-input {
+  height: 3vw;
+  min-height: 25px;
+  font-size: 17pt;
+  /* font-size: 14pt; */
+  width: 15vw;
+  /* height: 3vw; */
+  min-width: 60px;
+  /* min-height: 30px; */
+  margin-right: 5px;
+}

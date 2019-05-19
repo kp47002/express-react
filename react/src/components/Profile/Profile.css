@@ -1,0 +1,14 @@
+.profile {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0 5%;
+}
+
+.profile-header {
+  color: #ffffff;
+  font-size: 20pt;
+  font-weight: bold;
+}

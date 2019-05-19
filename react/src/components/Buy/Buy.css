@@ -6,3 +6,9 @@
     flex-direction: column;
     padding: 0 5%;
   }
+
+.buy-header {
+  color: #ffffff;
+  font-size: 20pt;
+  font-weight: bold;
+}

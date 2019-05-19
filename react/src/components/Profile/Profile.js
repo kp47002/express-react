@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Profile.css";
 
 import { withCookies, Cookies } from "react-cookie";
 import Product from "../Product";
@@ -59,10 +60,10 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
-        Profile Sales
+      <div className="profile">
+        <p className="profile-header">Profile Sales</p>
         <Product products={this.state.sales} mode="wiew" />
-        Profile Purcheses
+        <p className="profile-header">Profile Purcheses</p>
         <Product products={this.state.purcheses} mode="wiew" />
       </div>
     );

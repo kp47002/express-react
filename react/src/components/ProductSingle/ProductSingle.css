@@ -33,11 +33,11 @@
 }
 
 .product-seller {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .product-buyer {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .product-buy {
@@ -64,4 +64,3 @@
   color: red;
   font-weight: bold;
 }
-
