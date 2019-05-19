@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "../Product/Product";
+import "./Buy.css";
 
 import { withCookies, Cookies } from "react-cookie";
 
@@ -40,7 +41,7 @@ class Buy extends Component {
 
   render() {
     return (
-      <div>
+      <div className="buy">
         Buy
         <Product products={this.state.products} mode="buy" />
       </div>

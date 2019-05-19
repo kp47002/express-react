@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withCookies, Cookies } from "react-cookie";
+import "./ProductSingle.css";
+import image from "../../assets/product.jpg";
 
 class ProductSingle extends Component {
   constructor(props) {
@@ -39,17 +41,29 @@ class ProductSingle extends Component {
     let buy;
     if (this.props.mode == "buy") {
       if (this.state.activeUser == "") {
-        buy = "Login to buy";
+        buy = <p className="buy-msg">Login to buy</p>;
       } else {
-        buy = <button onClick={() => this.buy()}>Buy</button>;
+        buy = (
+          <button className="buy-btn" onClick={() => this.buy()}>
+            Buy
+          </button>
+        );
       }
     }
     console.log(this.props);
     return (
-      <div>
-        ProductSingle P. Name: {this.props.product.name}| Seller:{" "}
-        {this.props.product.username} | Buyer:
-        {this.props.product.buyer} - -{buy}
+      <div className="product-single">
+        <p className="product-name">{this.props.product.name}</p>
+        <img className="product-img" src={image} />
+        <div className="product-details">
+          <div className="product-info">
+            <p className="product-seller">
+              Seller: <b>{this.props.product.username}</b>
+            </p>
+            <p className="product-buyer">Buyer: <b>{this.props.product.buyer}</b></p>
+          </div>
+          <div className="product-buy">{buy}</div>
+        </div>
       </div>
     );
   }

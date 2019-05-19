@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProductSingle from "../ProductSingle/ProductSingle";
+import "./Product.css";
 
 class Product extends Component {
   render() {
@@ -8,8 +9,7 @@ class Product extends Component {
       products.push(<ProductSingle product={element} mode={this.props.mode} />);
     });
     return (
-      <div>
-        Product
+      <div className="products">
         {products}
       </div>
     );
