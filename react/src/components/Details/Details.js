@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import image from "../../assets/product.jpg";
 import { object } from "prop-types";
+import "./Details.css";
 
 class Details extends Component {
   constructor(props) {
@@ -42,18 +43,18 @@ class Details extends Component {
 
   render() {
     return (
-      <div className="product-single">
-        <p className="product-name">{this.state.product.name}</p>
-        <img className="product-img" src={image} />
-        <div className="product-details">
-          <div className="product-info">
-            <p className="product-seller">
+      <div className="details">
+        <p className="details-header">{this.state.product.name}</p>
+        <div className="details-details">
+          <img className="details-img" src={image} />
+          <div className="details-info">
+            <p className="details-seller">
               Seller: <b>{this.state.product.username}</b>
             </p>
-            <p className="product-buyer">
+            <p className="details-buyer">
               Buyer: <b>{this.state.product.buyer}</b>
             </p>
-            <p className="??">
+            <p className="details-description">
               Description: <b>{this.state.product.description}</b>
             </p>
           </div>
