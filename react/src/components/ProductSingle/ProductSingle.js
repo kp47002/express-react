@@ -57,18 +57,18 @@ class ProductSingle extends Component {
         <Link to={"/product/" + this.props.product.id_product}>
           <p className="product-name">{this.props.product.name}</p>
           <img className="product-img" src={image} />
-          <div className="product-details">
-            <div className="product-info">
-              <p className="product-seller">
-                Seller: <b>{this.props.product.username}</b>
-              </p>
-              <p className="product-buyer">
-                Buyer: <b>{this.props.product.buyer}</b>
-              </p>
-            </div>
-            <div className="product-buy">{buy}</div>
-          </div>
         </Link>
+        <div className="product-details">
+          <div className="product-info">
+            <p className="product-seller">
+              Seller: <b>{this.props.product.username}</b>
+            </p>
+            <p className="product-buyer">
+              Buyer: <b>{this.props.product.buyer}</b>
+            </p>
+          </div>
+          <div className="product-buy">{buy}</div>
+        </div>
       </div>
     );
   }

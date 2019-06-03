@@ -94,10 +94,10 @@ class Sell extends Component {
   render() {
     let sell;
     if (this.state.activeUser == "") {
-      // sell = <p>Login to sell</p>;
+      sell = <p>Login to sell</p>;
     } else {
       if (this.state.formSell == false) {
-        sell = <button className="sell-btn" onClick={() => this.formSell()}>Add</button>;
+        sell = <button className="sell-btn" onClick={() => this.formSell()}>Add product to sell</button>;
       } else {
         sell = (
           <div className="sell-form">
@@ -106,18 +106,21 @@ class Sell extends Component {
               value={this.state.name}
               onChange={this.handleChangeName}
               className="sell-input"
+              placeholder="Name"
             />
             <input
               type="text"
               value={this.state.description}
               onChange={this.handleChangeDescription}
               className="sell-input"
+              placeholder="Description"
             />
             <input
               type="text"
               value={this.state.price}
               onChange={this.handleChangePrice}
               className="sell-input"
+              placeholder="Price"
             />
             <button className="sell-btn" onClick={() => this.addProduct()}>Add</button>;
           </div>
