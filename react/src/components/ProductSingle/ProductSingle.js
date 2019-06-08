@@ -60,6 +60,9 @@ class ProductSingle extends Component {
         </Link>
         <div className="product-details">
           <div className="product-info">
+          <p className="product-price">
+              Price: <b>${this.props.product.price}</b>
+            </p>
             <p className="product-seller">
               Seller: <b>{this.props.product.username}</b>
             </p>

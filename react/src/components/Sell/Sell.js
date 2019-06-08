@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Product from "../Product/Product";
 import "./Sell.css";
+import Images from "../Images/Images";
+import Buttons from "../Buttons/Buttons";
 
 import { withCookies, Cookies } from "react-cookie";
 
@@ -17,12 +19,43 @@ class Sell extends Component {
       formSell: false,
       name: "",
       description: "",
-      price: 0.0
+      price: 0.0,
+      uploading: false,
+      images: []
     };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
   }
+
+  onChange = e => {
+    const files = Array.from(e.target.files);
+    this.setState({ uploading: true });
+
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append(i, file);
+    });
+
+    fetch(`http://localhost:3001/image-upload`, {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        this.setState({
+          uploading: false,
+          images
+        });
+      });
+  };
+
+  removeImage = id => {
+    this.setState({
+      images: this.state.images.filter(image => image.public_id !== id)
+    });
+  };
 
   handleChangeName(event) {
     console.log("handleChange");
@@ -92,12 +125,29 @@ class Sell extends Component {
   };
 
   render() {
+    const { uploading, images } = this.state;
+
+    const content = () => {
+      switch (true) {
+        case uploading:
+          return <p>spinner</p>;
+        case images.length > 0:
+          return <Images images={images} removeImage={this.removeImage} />;
+        default:
+          return <Buttons onChange={this.onChange} />;
+      }
+    };
+
     let sell;
     if (this.state.activeUser == "") {
       sell = <p>Login to sell</p>;
     } else {
       if (this.state.formSell == false) {
-        sell = <button className="sell-btn" onClick={() => this.formSell()}>Add product to sell</button>;
+        sell = (
+          <button className="sell-btn" onClick={() => this.formSell()}>
+            Add product to sell
+          </button>
+        );
       } else {
         sell = (
           <div className="sell-form">
@@ -122,7 +172,10 @@ class Sell extends Component {
               className="sell-input"
               placeholder="Price"
             />
-            <button className="sell-btn" onClick={() => this.addProduct()}>Add</button>;
+            <button className="sell-btn" onClick={() => this.addProduct()}>
+              Add
+            </button>
+            ;
           </div>
         );
       }
@@ -131,6 +184,7 @@ class Sell extends Component {
     return (
       <div className="sell">
         <p className="sell-header">Sell</p>
+        <div className="buttons">{content()}</div>
         <div className="sell-div">{sell}</div>
         <Product products={this.state.products} mode="sell" />
       </div>

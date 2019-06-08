@@ -12,20 +12,20 @@ class Profile extends Component {
     console.log("ck: " + cookies);
     this.state = {
       sales: [],
-      purcheses: [],
+      purchases: [],
       activeUser: cookies.get("loginCookie") || "",
       productId: this.props.match.params.productId | ""
     };
   }
   componentDidMount() {
     this.getSales();
-    this.getPurcheses();
+    this.getPurchases();
   }
 
-  getPurcheses = () => {
-    console.log("getPurcheses: ");
+  getPurchases = () => {
+    console.log("getPurchases: ");
     let location =
-      "http://localhost:3001/profile/purcheses/" + this.state.activeUser;
+      "http://localhost:3001/profile/purchases/" + this.state.activeUser;
 
     console.log(location);
     fetch(location, { credentials: "include" })
@@ -34,8 +34,8 @@ class Profile extends Component {
         return response.json();
       })
       .then(response => {
-        console.log("purcheses: " + response.purcheses);
-        this.setState({ purcheses: response.purcheses });
+        console.log("purchases: " + response.purchases);
+        this.setState({ purchases: response.purchases });
       })
 
       .catch(error => console.log(error));
@@ -59,12 +59,20 @@ class Profile extends Component {
   };
 
   render() {
+    let sales;
+    let purchases;
+    if (this.state.sales.length == 0)
+      sales = <p className="empty-list-msg">Your sales list is currently empty.</p>;
+    else sales = <Product products={this.state.sales} mode="view" />;
+    if (this.state.purchases.length == 0)
+    purchases = <p className="empty-list-msg">Your purchases list is currently empty.</p>;
+    else purchases = <Product products={this.state.purchases} mode="view" />;
     return (
       <div className="profile">
         <p className="profile-header">Profile Sales</p>
-        <Product products={this.state.sales} mode="wiew" />
-        <p className="profile-header">Profile Purcheses</p>
-        <Product products={this.state.purcheses} mode="wiew" />
+        <div>{sales}</div>
+        <p className="profile-header">Profile Purchases</p>
+        <div>{purchases}</div>
       </div>
     );
   }

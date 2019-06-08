@@ -32,7 +32,13 @@
   justify-content: space-between;
 }
 
+.product-price {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .product-seller {
+  margin-top: 0;
   margin-bottom: 0;
 }
 
