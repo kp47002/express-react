@@ -53,3 +53,30 @@
   /* margin-right: 5px; */
   margin-bottom: 0.5vw;
 }
+
+.sell-img-input {
+  display: none;
+}
+
+.div-input {
+  background-color: orange;
+  color: black;
+  font-size: 14pt;
+  width: 18vw;
+  padding: 1%;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-bottom: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+.img-label {
+  color: white;
+  font-size: 14pt;
+}
+
+.upload-div {
+  display: flex;
+  flex-direction: row;
+}

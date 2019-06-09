@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Product from "../Product/Product";
 import "./Sell.css";
-import Images from "../Images/Images";
-import Buttons from "../Buttons/Buttons";
 
 import { withCookies, Cookies } from "react-cookie";
 
@@ -20,41 +18,17 @@ class Sell extends Component {
       name: "",
       description: "",
       price: 0.0,
-      uploading: false,
-      images: []
+      selectedFile: null
     };
+    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
   }
 
-  onChange = e => {
-    const files = Array.from(e.target.files);
-    this.setState({ uploading: true });
-
-    const formData = new FormData();
-
-    files.forEach((file, i) => {
-      formData.append(i, file);
-    });
-
-    fetch(`http://localhost:3001/image-upload`, {
-      method: "POST",
-      body: formData
-    })
-      .then(res => res.json())
-      .then(images => {
-        this.setState({
-          uploading: false,
-          images
-        });
-      });
-  };
-
-  removeImage = id => {
-    this.setState({
-      images: this.state.images.filter(image => image.public_id !== id)
-    });
+  fileSelectedHandler = event => {
+    this.setState({ selectedFile: event.target.files[0] });
+    console.log(event.target.files[0]);
   };
 
   handleChangeName(event) {
@@ -125,19 +99,11 @@ class Sell extends Component {
   };
 
   render() {
-    const { uploading, images } = this.state;
-
-    const content = () => {
-      switch (true) {
-        case uploading:
-          return <p>spinner</p>;
-        case images.length > 0:
-          return <Images images={images} removeImage={this.removeImage} />;
-        default:
-          return <Buttons onChange={this.onChange} />;
-      }
-    };
-
+    let image;
+    if(this.state.selectedFile == null)
+      image = (<p>Image not selected</p>);
+    else 
+      image = (<p>Image selected</p>);
     let sell;
     if (this.state.activeUser == "") {
       sell = <p>Login to sell</p>;
@@ -158,6 +124,17 @@ class Sell extends Component {
               className="sell-input"
               placeholder="Name"
             />
+            <div className="upload-div">
+            <label className="div-input">
+              <input
+                className="sell-img-input"
+                type="file"
+                onChange={this.fileSelectedHandler}
+              />
+              Upload image
+            </label>
+            <label className="img-label">{image}</label>
+            </div>
             <input
               type="text"
               value={this.state.description}
@@ -184,7 +161,6 @@ class Sell extends Component {
     return (
       <div className="sell">
         <p className="sell-header">Sell</p>
-        <div className="buttons">{content()}</div>
         <div className="sell-div">{sell}</div>
         <Product products={this.state.products} mode="sell" />
       </div>
