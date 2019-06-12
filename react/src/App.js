@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
+import image from "./assets/package.png";
 
 class App extends Component {
   static propTypes = {
@@ -164,7 +165,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-body">
+          <img className="App-img" src={image} />
+          <div className="App-div">
+          <p className="App-header">Users</p>
           <table>
             <tbody>
               <tr>
@@ -175,6 +179,7 @@ class App extends Component {
               {rows}
             </tbody>
           </table>
+          </div>
         </header>
       </div>
     );

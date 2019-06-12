@@ -2,18 +2,50 @@
   text-align: center;
 }
 
-.App-header {
+.App-body {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  display: grid;
+  grid-template-columns: 40% 60%;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
+.App-header {
+  color: #ffffff;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.App-img {
+  width: stretch;
+  padding-left: 5%;
+}
+
+.App-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+@media screen and (max-width: 500px) {
+  .App-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .App-img {
+    padding-left: 0%;
+  }
 }
 

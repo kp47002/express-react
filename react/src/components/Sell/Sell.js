@@ -67,7 +67,7 @@ class Sell extends Component {
         name: this.state.name,
         description: this.state.description,
         price: this.state.price,
-        username: this.state.activeUser
+        username: this.state.activeUser,
       })
     }).then(response => {
       console.log(response);
@@ -100,10 +100,9 @@ class Sell extends Component {
 
   render() {
     let image;
-    if(this.state.selectedFile == null)
-      image = (<p>Image not selected</p>);
-    else 
-      image = (<p>Image selected</p>);
+    if (this.state.selectedFile == null)
+      image = <p className="sell-img-msg">Image not selected</p>;
+    else image = <p className="sell-img-msg">Image selected</p>;
     let sell;
     if (this.state.activeUser == "") {
       sell = <p>Login to sell</p>;
@@ -125,15 +124,15 @@ class Sell extends Component {
               placeholder="Name"
             />
             <div className="upload-div">
-            <label className="div-input">
-              <input
-                className="sell-img-input"
-                type="file"
-                onChange={this.fileSelectedHandler}
-              />
-              Upload image
-            </label>
-            <label className="img-label">{image}</label>
+              <label className="div-input">
+                <input
+                  className="sell-img-input"
+                  type="file"
+                  onChange={this.fileSelectedHandler}
+                />
+                Upload image
+              </label>
+              <label className="img-label">{image}</label>
             </div>
             <input
               type="text"
@@ -152,7 +151,6 @@ class Sell extends Component {
             <button className="sell-btn" onClick={() => this.addProduct()}>
               Add
             </button>
-            ;
           </div>
         );
       }
