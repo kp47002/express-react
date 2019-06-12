@@ -143,7 +143,7 @@ class Sell extends Component {
             />
             <input
               type="text"
-              value={this.state.price}
+              // value={this.state.price}
               onChange={this.handleChangePrice}
               className="sell-input"
               placeholder="Price"

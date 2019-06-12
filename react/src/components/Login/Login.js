@@ -68,7 +68,7 @@ class Login extends Component {
           window.location.reload();
         }
         console.log(response);
-        alert(message);
+        // alert(message);
         //event.preventDefault();
         //this.forceUpdate();
       });

@@ -21,7 +21,7 @@ class Header extends Component {
   logout() {
     const { cookies } = this.props;
     cookies.remove("loginCookie");
-    alert("Logout successfull!");
+    // alert("Logout successfull!");
     // window.location.reload();
     this.setState({ activeUser: "" });
   }
@@ -79,7 +79,7 @@ class Header extends Component {
               </Link>
               !
             </p>
-            <Link className="link logout" onClick={() => this.logout()}>
+            <Link to="/" className="link logout" onClick={() => this.logout()}>
               Logout
             </Link>
           </div>

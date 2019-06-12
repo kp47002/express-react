@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withCookies, Cookies } from "react-cookie";
 import "./ProductSingle.css";
-import image from "../../assets/product.jpg";
+import image from "../../assets/product3.jpg";
 import { Link } from "react-router-dom";
 
 class ProductSingle extends Component {
@@ -60,7 +60,7 @@ class ProductSingle extends Component {
         </Link>
         <div className="product-details">
           <div className="product-info">
-          <p className="product-price">
+            <p className="product-price">
               Price: <b>${this.props.product.price}</b>
             </p>
             <p className="product-seller">

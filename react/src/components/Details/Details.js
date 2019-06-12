@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import image from "../../assets/product.jpg";
+import image from "../../assets/product3.jpg";
 import { object } from "prop-types";
 import "./Details.css";
 
