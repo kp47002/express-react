@@ -8,9 +8,15 @@ class Product extends Component {
     let products = [];
     if (this.props.products) {
       this.props.products.forEach(element => {
-        products.push(
-          <ProductSingle product={element} mode={this.props.mode} />
-        );
+        if (this.props.mode == "buy" && element.buyer == null) {
+          products.push(
+            <ProductSingle product={element} mode={this.props.mode} />
+          );
+        } else if (this.props.mode == "sell" && element.buyer == null) {
+          products.push(
+            <ProductSingle product={element} mode={this.props.mode} />
+          );
+        }
       });
     } else {
       products.push(<Details />);
